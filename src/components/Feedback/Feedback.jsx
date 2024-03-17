@@ -9,7 +9,6 @@ export const Feedback = ({ feedbackData, totalFeedback }) => {
         <li className={styles.feedbackListItem}>Neutral: {neutral}</li>
         <li className={styles.feedbackListItem}>Bad: {bad}</li>
         <li className={styles.feedbackListItem}>Total: {totalFeedback}</li>
-        <li className={styles.feedbackListItem}>Positive: {Math.round(((good + neutral) / totalFeedback) * 100) || 0}%</li>
       </ul>
     )
 };

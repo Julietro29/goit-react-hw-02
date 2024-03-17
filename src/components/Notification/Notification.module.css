@@ -1,0 +1,6 @@
+.notificationWrapper {
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 20px;
+}

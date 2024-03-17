@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Description } from './Description/Description';
 import { Options } from './Options/Options';
 import { Feedback } from './Feedback/Feedback';
+import { Notification } from './Notification/Notification';
 
 const App = () => {
   const initialFeedbackData = JSON.parse(localStorage.getItem('feedbackData')) || {
@@ -42,13 +43,16 @@ const App = () => {
       <div>
         <Options onUpdateFeedback={updateFeedback} totalFeedback={totalFeedback} />
       </div>
-      {totalFeedback === 0 ? (
-        <p>No feedback yet</p>
+      {totalFeedback > 0 ? (
+        <>
+          <Feedback feedbackData={feedbackData} totalFeedback={totalFeedback} />
+          <p>Positive: {Math.round(((feedbackData.good + feedbackData.neutral) / totalFeedback) * 100) || 0}%</p>
+        </>
       ) : (
-        <Feedback feedbackData={feedbackData} totalFeedback={totalFeedback} />
+        <Notification message={"No feedback yet"} />
       )}
     </div>
   );
 };
 
-export default App
+export default App;
